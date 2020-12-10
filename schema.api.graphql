@@ -1,5 +1,5 @@
 schema {
-  query: query
+  query: Query
   mutation: Mutation
 }
 
@@ -62,7 +62,7 @@ interface IProfile {
   location: String
   website: AWSURL
   birthdate: AWSDate
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   tweets: TweetsPage!
   followersCount: Int!
   followingCount: Int!
@@ -80,7 +80,7 @@ type MyProfile implements IProfile {
   location: String
   website: AWSURL
   birthdate: AWSDate
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   tweets: TweetsPage!
   followersCount: Int!
   followingCount: Int!
@@ -98,7 +98,7 @@ type OtherProfile implements IProfile {
   location: String
   website: AWSURL
   birthdate: AWSDate
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   tweets: TweetsPage!
   followersCount: Int!
   followingCount: Int!
@@ -117,7 +117,7 @@ interface ITweet {
 type Tweet implements ITweet {
   id: ID!
   profile: IProfile!
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   text: String!
   reples: Int!
   likes: Int!
@@ -129,7 +129,7 @@ type Tweet implements ITweet {
 type Reply implements ITweet {
   id: ID!
   profile: IProfile!
-  createAt: AWSDateTime!
+  createdAt: AWSDateTime!
   inReplyToTweet: ITweet!
   inReplyToUsers: [IProfile!]
   text: String!
