@@ -27,13 +27,12 @@ custom:
 
 functions:
   confirmUserSignup:
-    handler: funtions/confirm-user-signup.handler
+    handler: functions/confirm-user-signup.handler
     environment:
       USERS_TABLE: !Ref UsersTable
     iamRoleStatements:
       - Effect: Allow
-        Action:
-          - dynanodb:PutItem
+        Action: dynamodb:PutItem
         Resource: !GetAtt UsersTable.Arn
 
 # you can add CloudFormation resource templates here
@@ -101,3 +100,6 @@ resources:
       Value: ${self:custom.region}
     CognitoUserPoolId:
       Value: !Ref CognitoUserPool
+
+    WebCognitoUserPoolClientId:
+      Value: !Ref WebUserPoolClient
