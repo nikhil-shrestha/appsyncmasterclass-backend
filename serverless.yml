@@ -118,13 +118,14 @@ resources:
         AccelerateConfiguration:
           AccelerationStatus: Enabled
         CorsConfiguration:
-          - AllowedMethods:
-              - GET
-              - PUT
-            AllowedOrigins:
-              - '*'
-            AllowedHeaders:
-              - '*'
+          CorsRules:
+            - AllowedMethods:
+                - GET
+                - PUT
+              AllowedOrigins:
+                - '*'
+              AllowedHeaders:
+                - '*'
 
   Outputs:
     AwsRegion:
