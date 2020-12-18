@@ -42,7 +42,17 @@ functions:
         Action: dynamodb:PutItem
         Resource: !GetAtt UsersTable.Arn
 
-# you can add CloudFormation resource templates here
+  getImageUploadUrl:
+    handler: functions/get-upload-url.handler
+    environment:
+      BUCKET_NAME: !Ref AssetsBucket
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - s3:PutObject
+          - s3:PutObjectAcl
+        Resource: !Sub ${AssetsBucket.Arn}/*
+
 resources:
   Resources:
     UsersTable:
@@ -102,15 +112,26 @@ resources:
           - ALLOW_REFRESH_TOKEN_AUTH
         PreventUserExistenceErrors: ENABLED
 
+    AssetsBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        AccelerateConfiguration:
+          AccelerationStatus: Enabled
+        CorsConfiguration:
+          - AllowedMethods:
+              - GET
+              - PUT
+            AllowedOrigins:
+              - '*'
+            AllowedHeaders:
+              - '*'
+
   Outputs:
     AwsRegion:
       Value: ${self:custom.region}
 
     CognitoUserPoolId:
       Value: !Ref CognitoUserPool
-
-    CognitoUserPoolArn:
-      Value: !GetAtt CognitoUserPool.Arn
 
     WebCognitoUserPoolClientId:
       Value: !Ref WebUserPoolClient
