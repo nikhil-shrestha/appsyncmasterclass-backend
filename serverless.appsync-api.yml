@@ -15,6 +15,14 @@ mappingTemplates:
     dataSource: getImageUploadUrlFunction
     request: false
     response: false
+  - type: Query
+    field: getTweets
+    dataSource: tweetsTable
+
+  # Nested Fields
+  - type: Tweet
+    field: profile
+    dataSource: usersTable
 
   - type: Mutation
     field: editMyProfile
@@ -32,6 +40,10 @@ dataSources:
     name: usersTable
     config:
       tableName: !Ref UsersTable
+  - type: AMAZON_DYNAMODB
+    name: tweetsTable
+    config:
+      tableName: !Ref TweetsTable
   - type: AWS_LAMBDA
     name: getImageUploadUrlFunction
     config:
