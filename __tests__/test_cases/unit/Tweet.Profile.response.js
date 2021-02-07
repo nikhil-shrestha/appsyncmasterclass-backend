@@ -3,11 +3,11 @@ const when = require('../../steps/when');
 const chance = require('chance').Chance();
 const path = require('path');
 
-describe('Tweet.Profile.response template', () => {
+describe('Tweet.profile.response template', () => {
   it("Should set __typename as 'MyProfile' for current user", () => {
     const templatePath = path.resolve(
       __dirname,
-      '../../../mapping-templates/Tweet.Profile.response.vtl'
+      '../../../mapping-templates/Tweet.profile.response.vtl'
     );
 
     const username = chance.guid();
@@ -24,10 +24,10 @@ describe('Tweet.Profile.response template', () => {
     });
   });
 
-  it("Should set __typename as 'OtherProfile' for other user", () => {
+  it("Should set __typename as 'OtherProfile' for other users", () => {
     const templatePath = path.resolve(
       __dirname,
-      '../../../mapping-templates/Tweet.Profile.response.vtl'
+      '../../../mapping-templates/Tweet.profile.response.vtl'
     );
 
     const username = chance.guid();

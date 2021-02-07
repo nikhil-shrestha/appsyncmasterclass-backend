@@ -1,2 +1,2 @@
 # appsyncmasterclass-backend
-Backend for the Appsync Masterclass demo app
+Backend for the AppSync Masterclass demo app

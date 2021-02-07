@@ -1,7 +1,7 @@
 require('dotenv').config();
 const given = require('../../steps/given');
-const when = require('../../steps/when');
 const then = require('../../steps/then');
+const when = require('../../steps/when');
 const chance = require('chance').Chance();
 
 describe('Given an authenticated user', () => {
@@ -42,7 +42,7 @@ describe('Given an authenticated user', () => {
       await expect(
         when.a_user_calls_getTweets(user, user.username, 26)
       ).rejects.toMatchObject({
-        message: expect.stringMatching('max limit at 25')
+        message: expect.stringContaining('max limit is 25')
       });
     });
   });

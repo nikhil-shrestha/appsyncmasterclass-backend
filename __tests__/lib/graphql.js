@@ -32,7 +32,6 @@ module.exports = async (url, query, variables = {}, auth) => {
     });
 
     const { data, errors } = resp.data;
-
     throwOnErrors({ query, variables, errors });
     return data;
   } catch (err) {

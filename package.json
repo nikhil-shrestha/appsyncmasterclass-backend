@@ -2,7 +2,7 @@
   "name": "appsyncmasterclass-backend",
   "private": true,
   "version": "1.0.0",
-  "description": "Backend for the Appsync Masterclass demo app",
+  "description": "Backend for the AppSync Masterclass demo app",
   "main": "index.js",
   "scripts": {
     "sls": "sls",
@@ -23,19 +23,19 @@
   },
   "homepage": "https://github.com/nikhil-shrestha/appsyncmasterclass-backend#readme",
   "devDependencies": {
-    "@types/jest": "^26.0.19",
-    "amplify-appsync-simulator": "^1.24.2",
-    "amplify-velocity-template": "^1.4.2",
-    "aws-sdk": "^2.807.0",
+    "@types/jest": "^26.0.15",
+    "amplify-appsync-simulator": "^1.23.8",
+    "amplify-velocity-template": "^1.3.4",
+    "aws-sdk": "^2.778.0",
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
-    "jest": "^26.6.3",
+    "jest": "^26.6.1",
     "lodash": "^4.17.20",
     "serverless": "2.4.0",
     "serverless-appsync-plugin": "^1.4.0",
     "serverless-export-env": "^1.4.0",
-    "serverless-iam-roles-per-function": "^3.0.1",
-    "serverless-manifest-plugin": "^1.0.7"
+    "serverless-iam-roles-per-function": "^2.0.2",
+    "serverless-manifest-plugin": "^1.0.6"
   },
   "dependencies": {
     "chance": "^1.1.7",

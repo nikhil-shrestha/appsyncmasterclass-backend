@@ -31,7 +31,11 @@ const we_invoke_confirmUserSignup = async (username, name, email) => {
   await handler(event, context);
 };
 
-const we_invoke_tweet = async (username, extension, contentType) => {
+const we_invoke_getImageUploadUrl = async (
+  username,
+  extension,
+  contentType
+) => {
   const handler = require('../../functions/get-upload-url').handler;
 
   const context = {};
@@ -48,12 +52,8 @@ const we_invoke_tweet = async (username, extension, contentType) => {
   return await handler(event, context);
 };
 
-const we_invoke_getImageUploadUrl = async (
-  username,
-  extension,
-  contentType
-) => {
-  const handler = require('../../functions/get-upload-url').handler;
+const we_invoke_tweet = async (username, text) => {
+  const handler = require('../../functions/tweet').handler;
 
   const context = {};
   const event = {
@@ -61,8 +61,7 @@ const we_invoke_getImageUploadUrl = async (
       username
     },
     arguments: {
-      extension,
-      contentType
+      text
     }
   };
 
@@ -208,13 +207,11 @@ const a_user_calls_tweet = async (user, text) => {
   const tweet = `mutation tweet($text: String!) {
     tweet(text: $text) {
       id
-
       profile {
         id
         name
         screenName
       }
-
       createdAt
       text
       replies
@@ -241,7 +238,7 @@ const a_user_calls_tweet = async (user, text) => {
 
 const a_user_calls_getTweets = async (user, userId, limit, nextToken) => {
   const getTweets = `query getTweets($userId: ID!, $limit: Int!, $nextToken: String) {
-    getTweets(userId: $userId, limit: $limit, $nextToken: $nextToken) {
+    getTweets(userId: $userId, limit: $limit, nextToken: $nextToken) {
       nextToken
       tweets {
         id
@@ -252,12 +249,12 @@ const a_user_calls_getTweets = async (user, userId, limit, nextToken) => {
           screenName
         }
 
-        ... on Tweet {
+        ... on Tweet {          
           text
           replies
           likes
           retweets
-        }        
+        }
       }
     }
   }`;
@@ -283,12 +280,12 @@ const a_user_calls_getTweets = async (user, userId, limit, nextToken) => {
 module.exports = {
   we_invoke_confirmUserSignup,
   we_invoke_getImageUploadUrl,
+  we_invoke_tweet,
   a_user_signs_up,
   we_invoke_an_appsync_template,
   a_user_calls_getMyProfile,
   a_user_calls_editMyProfile,
   a_user_calls_getImageUploadUrl,
-  we_invoke_tweet,
   a_user_calls_tweet,
   a_user_calls_getTweets
 };
