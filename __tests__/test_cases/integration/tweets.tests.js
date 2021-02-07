@@ -9,7 +9,7 @@ describe('Given an authentication user', () => {
     user = await given.an_authenticated_user();
   });
 
-  describe('Ehen he sends a tweet', async () => {
+  describe('When he sends a tweet', async () => {
     let tweet;
     const text = chance.string({ length: 16 });
     beforeAll(async () => {
